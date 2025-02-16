@@ -17,28 +17,26 @@
             justify-content: center;
             align-items: center;
             height: 100%;
-            position: relative; /* Needed for positioning the link */
         }
-        .container img {
+        .container video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* This ensures the GIF covers the entire container */
-        }
-        .full-screen-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; /* Ensure the link is above the image */
-            opacity: 0; /* Make the link invisible */
+            object-fit: cover; /* This ensures the video covers the entire container */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="20.gif" alt="Description of GIF">
-        <a class="full-screen-link" href="https://polygonpunks.gitbook.io/whitepaper" target="_blank"></a>
+        <video id="fullPageVideo" width="100%" height="auto" autoplay loop muted playsinline>
+            <source src="Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
+
+    <script>
+        document.getElementById('fullPageVideo').addEventListener('click', function() {
+            window.location.href = 'https://polygonpunks.gitbook.io/whitepaper';
+        });
+    </script>
 </body>
 </html>
