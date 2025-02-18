@@ -29,18 +29,30 @@
 </head>
 <body>
     <div class="container">
-        <video id="fullPageVideo" aria-label="Video background, click to navigate to our whitepaper" width="100%" height="auto" autoplay loop muted playsinline>
+        <video id="fullPageVideo" aria-label="Video background, click to navigate to our whitepaper" width="100%" height="auto" autoplay muted playsinline>
             <source src="23.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
     <script>
-        document.getElementById('fullPageVideo').addEventListener('click', function() {
+        const video = document.getElementById('fullPageVideo');
+        
+        // Remove loop attribute
+        video.removeAttribute('loop');
+
+        // Click event to navigate
+        video.addEventListener('click', function() {
             window.location.href = 'https://polygonpunks.gitbook.io/whitepaper';
         });
 
-        document.getElementById('fullPageVideo').addEventListener('error', function(e) {
+        // Video ended event to navigate if not clicked
+        video.addEventListener('ended', function() {
+            window.location.href = 'https://polygonpunks.gitbook.io/whitepaper';
+        });
+
+        // Error handling for video loading
+        video.addEventListener('error', function(e) {
             console.error('Video could not be loaded', e);
             // Optionally redirect or display an error message
         });
